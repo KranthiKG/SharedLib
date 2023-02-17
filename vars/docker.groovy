@@ -1,13 +1,13 @@
 def dockerBuild(String repository){
   sh """
-  docker build -t ${repository} .
+  docker build -t "${repository}" .
   """
 }
 
 
 
 def dockerPush(String repository){
-  sh "docker push ${repository}"
+  sh "docker push "${repository}""
 }
 
 def dockerLogin(){
