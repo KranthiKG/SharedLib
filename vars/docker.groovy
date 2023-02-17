@@ -2,8 +2,8 @@ def dockerBuild(String repository){
   sh "docker build -t ${repository} ."
 }
 
-def dockerBuild1(String repository){
-  docker.build${repository}
+def dockerBuild1(){
+  sh 'docker build -t kranthikg/sharedlibimage .'
 }
 
 def dockerPush(String repository){
