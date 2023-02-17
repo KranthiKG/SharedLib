@@ -3,7 +3,7 @@ def dockerBuild(String repository){
 }
 
 def dockerBuild1(String repository){
-  docker.build${("repository")}
+  docker.build${repository}
 }
 
 def dockerPush(String repository){
