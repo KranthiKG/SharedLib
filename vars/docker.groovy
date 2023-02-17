@@ -1,5 +1,7 @@
 def dockerBuild(String repository){
-  sh "docker build -t ${repository} ."
+  sh """
+  docker build -t ${repository} .
+  """
 }
 
 def dockerBuild1(){
@@ -10,12 +12,13 @@ def dockerPush(String repository){
   sh "docker push ${repository}"
 }
 
-def dockerPush1(string repository)
+def dockerLogin(){
  withCredentials([string(credentialsId: 'dockerhubpwd', variable: 'dockerhubpwd')]) {
-                    sh 'docker login -u kranthikg -p ${dockerhubpwd}'
+   sh """
+   docker login -u kranthikg -p ${dockerhubpwd}
+   """
+ }
 }
-sh "docker push kranthikg/sharedlibimage"
-
 def dockerPull(String repository){
   sh "docker pull ${repository}"
 }
