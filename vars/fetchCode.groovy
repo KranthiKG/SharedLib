@@ -4,7 +4,7 @@ def fetchCode(){
 
 
 def GitFetch(){
- git url: "https://github.com/KranthiKG/Devops-Integration-SharedLib.git"
+ checkout scmGit(branches: [[name: '*/main']], extensions: [], userRemoteConfigs: [[url: 'https://github.com/KranthiKG/Devops-Integration-SharedLib.git']])
 }
 
 def fetchCode1(){
