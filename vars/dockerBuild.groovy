@@ -10,8 +10,8 @@ def push(String tag) {
     """
 }
 
-def tag(String tag, String tag){
+def tag(String tag1, String tag2){
    sh """
-       docker image tag "${tag}" "${tag}"
+       docker image tag "${tag1}" "${tag2}"
       """ 
 }
