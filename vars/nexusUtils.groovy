@@ -7,11 +7,15 @@ import org.apache.http.entity.ContentType
 import org.apache.http.entity.mime.HttpMultipartMode
 import org.apache.http.entity.mime.MultipartEntityBuilder
 import org.apache.http.impl.client.HttpClients
+import hudson.util.Secret
 
-def uploadMavenArtifactToNexus(String groupId, String artifactId, String version, File artifact, String nexusUrl, String nexusUsername, String nexusPassword, String repositoryId) {
+def uploadMavenArtifactToNexus(String groupId, String artifactId, String version, File artifact, String nexusUrl, String nexusCredentialsId, String repositoryId) {
+    def nexusCredentials = hudson.util.Secret.fromString(Jenkins.instance.credentials.getById(nexusCredentialsId).password)
+    def nexusUsername = Jenkins.instance.credentials.getById(nexusCredentialsId).username
+
     def httpclient = HttpClients.createDefault()
     def httpPost = new HttpPost("$nexusUrl/service/rest/v1/components?repository=$repositoryId")
-    httpPost.setHeader("Authorization", "Basic " + "${nexusUsername}:${nexusPassword}".bytes.encodeBase64())
+    httpPost.setHeader("Authorization", "Basic " + "${nexusUsername}:${nexusCredentials.getPlainText()}".bytes.encodeBase64())
 
     def builder = MultipartEntityBuilder.create()
     builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE)
