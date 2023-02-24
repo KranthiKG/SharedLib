@@ -14,7 +14,7 @@ def uploadMavenArtifactToNexus(String groupId, String artifactId, String version
     def nexusUsername = Jenkins.instance.credentials.getById(nexusCredentialsId).username
 
     def httpclient = HttpClients.createDefault()
-    def httpPost = new HttpPost("$nexusUrl/service/rest/v1/components?repository=$repositoryId")
+    def httpPost = new HttpPost("$nexusUrl/#admin/repository/repositories=$repositoryId")
     httpPost.setHeader("Authorization", "Basic " + "${nexusUsername}:${nexusCredentials.getPlainText()}".bytes.encodeBase64())
 
     def builder = MultipartEntityBuilder.create()
