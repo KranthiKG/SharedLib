@@ -28,5 +28,6 @@ def uploadMavenArtifactToNexus(String groupId, String artifactId, String version
     httpPost.setEntity(multipart)
 
     HttpResponse response = httpclient.execute(httpPost)
-    response.getEntity().consumeContent()
+    response.getEntity().getContent().close()
+    httpclient.close()
 }
