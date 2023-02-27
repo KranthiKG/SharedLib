@@ -19,10 +19,10 @@ def uploadMavenArtifactToNexus(String groupId, String artifactId, String version
 
     def builder = MultipartEntityBuilder.create()
     builder.setMode(HttpMultipartMode.BROWSER_COMPATIBLE)
-    builder.addBinaryBody("maven2.asset1", artifact, ContentType.APPLICATION_OCTET_STREAM, artifact.getName())
-    builder.addTextBody("maven2.groupId", groupId)
-    builder.addTextBody("maven2.artifactId", artifactId)
-    builder.addTextBody("maven2.version", version)
+    builder.addBinaryBody("maven3.asset1", artifact, ContentType.APPLICATION_OCTET_STREAM, artifact.getName())
+    builder.addTextBody("maven3.groupId", groupId)
+    builder.addTextBody("maven3.artifactId", artifactId)
+    builder.addTextBody("maven3.version", version)
 
     def multipart = builder.build()
     httpPost.setEntity(multipart)
