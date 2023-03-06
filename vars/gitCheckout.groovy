@@ -8,6 +8,6 @@ def call(Map config) {
 
 //         stage('gitcheckout') {
 //             steps {
-//                 gitCheckout(name:"23ArushiJain" ,repo: "webapp_jenkins.git")
+//                 gitCheckout(name:"kranthikg" ,repo: "webapp_jenkins.git")
 //             }
 //         }
